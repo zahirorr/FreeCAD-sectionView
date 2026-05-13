@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  package.xml – FreeCAD Addon Manager manifest (FreeCAD 0.21+)
+  https://wiki.freecad.org/Package_Metadata
+-->
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+
+  <name>SWSectionWorkbench</name>
+  <description>
+    A lightweight clipping and sectioning workbench for FreeCAD.
+    Enables fast interactive cross-section visualisation directly inside the
+    3D viewport using Coin3D clip planes — non-destructive and real-time.
+  </description>
+  <version>1.0.0</version>
+  <date>2025-05-14</date>
+
+  <maintainer email="">SWSectionWorkbench contributors</maintainer>
+  <license>LGPL-2.1-or-later</license>
+  <url type="repository">https://github.com/example/SWSectionWorkbench</url>
+
+  <freecadmin>0.21</freecadmin>
+  <pythonmin>3.9</pythonmin>
+
+  <content>
+    <workbench>
+      <classname>SWSectionWorkbench</classname>
+      <subdirectory>./</subdirectory>
+    </workbench>
+  </content>
+
+</package>

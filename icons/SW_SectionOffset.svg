@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="6" y="14" width="52" height="36" rx="3" ry="3"
+        fill="#3a3a4a" stroke="#5a5a7a" stroke-width="1.5"/>
+  <!-- Plane -->
+  <rect x="29" y="8" width="4" height="48" rx="2" ry="2"
+        fill="#c47be0" opacity="0.9"/>
+  <!-- Ruler ticks -->
+  <line x1="10" y1="44" x2="54" y2="44" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="15" y1="40" x2="15" y2="44" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="25" y1="38" x2="25" y2="44" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="35" y1="40" x2="35" y2="44" stroke="#c47be0" stroke-width="2"/>
+  <line x1="45" y1="40" x2="45" y2="44" stroke="#aaa" stroke-width="1.5"/>
+  <!-- Arrow showing offset -->
+  <line x1="31" y1="32" x2="42" y2="32" stroke="#c47be0" stroke-width="2" stroke-dasharray="3,2"/>
+  <polygon points="42,32 37,28 37,36" fill="#c47be0"/>
+</svg>

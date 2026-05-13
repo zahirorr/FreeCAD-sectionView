@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="6" y="14" width="52" height="36" rx="3" ry="3"
+        fill="#3a3a4a" stroke="#5a5a7a" stroke-width="1.5"/>
+  <!-- Plane surface (parallelogram) -->
+  <polygon points="12,44 28,20 52,20 36,44" fill="#5b8dd9" opacity="0.35"/>
+  <polygon points="12,44 28,20 52,20 36,44" fill="none"
+           stroke="#5b8dd9" stroke-width="1.5"/>
+  <!-- Three point dots -->
+  <circle cx="28" cy="20" r="4" fill="#00c8a0"/>
+  <circle cx="52" cy="20" r="4" fill="#00c8a0"/>
+  <circle cx="12" cy="44" r="4" fill="#00c8a0"/>
+  <!-- Labels 1 2 3 -->
+  <text x="24" y="17" font-size="7" fill="white" font-family="sans-serif">1</text>
+  <text x="48" y="17" font-size="7" fill="white" font-family="sans-serif">2</text>
+  <text x="8"  y="42" font-size="7" fill="white" font-family="sans-serif">3</text>
+</svg>

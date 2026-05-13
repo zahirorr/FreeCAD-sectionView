@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="6" y="14" width="52" height="36" rx="3" ry="3"
+        fill="#3a3a4a" stroke="#5a5a7a" stroke-width="1.5"/>
+  <!-- Plane -->
+  <rect x="29" y="8" width="4" height="48" rx="2" ry="2"
+        fill="#f5a623" opacity="0.9"/>
+  <!-- Double arrow -->
+  <line x1="10" y1="32" x2="54" y2="32" stroke="#e0c040" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="10,32 20,26 20,38" fill="#e0c040"/>
+  <polygon points="54,32 44,26 44,38" fill="#e0c040"/>
+</svg>

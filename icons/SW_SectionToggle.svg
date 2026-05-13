@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="6" y="14" width="52" height="36" rx="3" ry="3"
+        fill="#3a3a4a" stroke="#5a5a7a" stroke-width="1.5"/>
+  <!-- Plane -->
+  <rect x="29" y="8" width="4" height="48" rx="2" ry="2"
+        fill="#f5a623" opacity="0.9"/>
+  <!-- Left arrow -->
+  <polygon points="7,32 17,25 17,39" fill="#5b8dd9"/>
+  <!-- Right arrow -->
+  <polygon points="57,32 47,25 47,39" fill="#00c8a0"/>
+</svg>

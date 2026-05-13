@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="6" y="14" width="52" height="36" rx="3" ry="3"
+        fill="#3a3a4a" stroke="#5a5a7a" stroke-width="1.5"/>
+  <!-- Clip plane ghost -->
+  <rect x="29" y="8" width="4" height="48" rx="2" ry="2"
+        fill="#888" opacity="0.4"/>
+  <!-- X mark -->
+  <line x1="14" y1="22" x2="50" y2="42" stroke="#e05050" stroke-width="4" stroke-linecap="round"/>
+  <line x1="50" y1="22" x2="14" y2="42" stroke="#e05050" stroke-width="4" stroke-linecap="round"/>
+</svg>
