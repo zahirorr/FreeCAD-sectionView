@@ -75,12 +75,13 @@ class SectionEngine:
         # Remove any stale clip planes first
         _remove_all_clip_planes(sg)
 
-        # Build the Coin plane equation:  n · x + d = 0  where d = -(n · p)
-        # Points on the *positive-normal side* are kept visible.
+        # Build the Coin plane distance:  SbPlane(normal, D)  defines  n · P = D
+        # So D is the signed distance from the origin along the normal.
+        # Points on the *positive-normal side* (n · P > D) are kept visible.
         effective_base = base + normal * offset
 
         nx, ny, nz = normal.x, normal.y, normal.z
-        d = -(effective_base.x * nx + effective_base.y * ny + effective_base.z * nz)
+        d = effective_base.x * nx + effective_base.y * ny + effective_base.z * nz
 
         sb_normal = coin.SbVec3f(nx, ny, nz)
         sb_plane  = coin.SbPlane(sb_normal, d)
