@@ -45,6 +45,49 @@ except NameError:
                 _wb_dir = _candidate
                 break
 
+# ---------------------------------------------------------------------------
+# Helper: ask user to choose a standard plane when no geometry is selected
+# ---------------------------------------------------------------------------
+def _choose_standard_plane():
+    """Show a small dialog asking the user to select Front, Right, or Top plane.
+    Returns a tuple (base, normal) where base is App.Vector(0,0,0) and normal
+    corresponds to the chosen orientation, or None if the user cancels.
+    """
+    try:
+        from PySide2 import QtWidgets
+    except ImportError:
+        from PySide import QtGui as QtWidgets  # pragma: no cover
+
+    dialog = QtWidgets.QDialog()
+    dialog.setWindowTitle("Select Standard Plane")
+    layout = QtWidgets.QVBoxLayout(dialog)
+    label = QtWidgets.QLabel("No planar geometry selected. Choose a standard plane:")
+    layout.addWidget(label)
+    # Radio buttons
+    rb_front = QtWidgets.QRadioButton("Front (Y‑axis)")
+    rb_right = QtWidgets.QRadioButton("Right (X‑axis)")
+    rb_top = QtWidgets.QRadioButton("Top (Z‑axis)")
+    rb_front.setChecked(True)  # default
+    layout.addWidget(rb_front)
+    layout.addWidget(rb_right)
+    layout.addWidget(rb_top)
+    # OK / Cancel buttons
+    btn_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel)
+    layout.addWidget(btn_box)
+    btn_box.accepted.connect(dialog.accept)
+    btn_box.rejected.connect(dialog.reject)
+    if dialog.exec_() != QtWidgets.QDialog.Accepted:
+        return None
+    # Determine normal based on selection
+    if rb_front.isChecked():
+        normal = App.Vector(0, 1, 0)  # front looks along -Y, normal pointing +Y
+    elif rb_right.isChecked():
+        normal = App.Vector(1, 0, 0)  # right side
+    else:
+        normal = App.Vector(0, 0, 1)  # top view normal
+    base = App.Vector(0, 0, 0)
+    return base, normal
+
 _ICON_DIR = os.path.join(_wb_dir, "icons")
 
 
@@ -57,10 +100,14 @@ def _icon(name):
 def _get_plane():
     result = SWSectionPlane.get_plane_from_selection()
     if result is None:
-        App.Console.PrintWarning(
-            "SWSectionWorkbench: please select a face, datum plane, or an object "
-            "with a Placement before activating the section.\n"
-        )
+        # Offer the standard plane choice dialog
+        result = _choose_standard_plane()
+        if result is None:
+            App.Console.PrintWarning(
+                "SWSectionWorkbench: no plane selected and user cancelled.\n"
+            )
+        else:
+            App.Console.PrintMessage("SWSectionWorkbench: using standard plane selection.\n")
     return result
 
 
@@ -90,6 +137,11 @@ class CmdSectionOn:
         if plane:
             base, normal = plane
             ENGINE.apply(base, normal)
+            # Automatically open the offset panel so the user can adjust immediately
+            from SWSectionPanel import SWSectionOffsetTask
+            if Gui.Control.activeDialog():
+                Gui.Control.closeDialog()
+            Gui.Control.showDialog(SWSectionOffsetTask())
 
 
 # ===========================================================================
@@ -141,6 +193,11 @@ class CmdSectionToggle:
             if plane:
                 base, normal = plane
                 ENGINE.apply(base, normal)
+                # Automatically open the offset panel
+                from SWSectionPanel import SWSectionOffsetTask
+                if Gui.Control.activeDialog():
+                    Gui.Control.closeDialog()
+                Gui.Control.showDialog(SWSectionOffsetTask())
 
 
 # ===========================================================================
